@@ -1,0 +1,43 @@
+/* Estilos de nuestro cuerpo body */
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #2de4f1;
+}
+/*  */
+/* Estilo div memori game , Columnas  */
+.memory-game{
+    display: grid;
+    grid-template-columns: repeat(4,100px); /* Cuatro columnas de 100px de tamaño*/
+    gap: 10px;/*se paracion de columnas*/
+}
+/* estilos cartas del memory game */
+.card{
+    width: 100px; /*tamaño cartas*/
+    height: 150px;
+    background-color: #31f87d;
+    display: flex;
+    justify-content: center;/*cartas centradas*/
+    align-items: center;
+    font-size: 24px;/*  */
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transform-style: preserve-3d;/* cartas 3D */
+    transition: transform 0.5s;/* Tiempo transicion muestra carta*/
+}
+/* Volteo de carta, clase voltear, se compara si son iguales se cumple condicion o no  */
+.card.flipped{
+    transform: rotateY(180deg);/*  rote carta en el angulo horizontal 180 grados*/
+}
+/* */
+.card .symbol{
+    display: none;
+}
+/* Cuando se voltie la carta  */
+.card.flipped .symbol{
+    display: block;
+}
