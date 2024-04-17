@@ -1,125 +1,79 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ddcccc; /* Color de fondo para toda la página */
+}
 
-body{
-    font-family: 'Roboto', sans-serif;
-  }
-  /*--------------------------------------------------------------
-  # Navigation Menu
-  --------------------------------------------------------------*/
-  .nav-back{
-      background: rgba(17, 219, 207,0.8);
-      color: #fff;
-  }
-  .navbar-brand{
-    color: #000;
-  }
-  .navbar-brand:hover{
-    color: #fff;
-  }
-  .nav-link{
-    color: #000;
-  }
-  .nav-link:hover{
-    color:#fff;
-  }
-  .navbar-toggler{
-    outline: none!important;
-  }
-  
-     
-   
-  /*--------------------------------------------------------------
-  # Hero Section
-  --------------------------------------------------------------*/
-  #hero {
-      width: 100%;
-      height: 80vh;
-      background: url("./images/hero.jpg") center center;
-      background-size: cover;
-      position: relative;
-    }
-    
-    #hero .container {
-      padding-top: 80px;
-    }
-    
-    #hero:before {
-      content: "";
-      background: rgba(0, 0, 0, 0.6);
-      position: absolute;
-      bottom: 0;
-      top: 0;
-      left: 0;
-      right: 0;
-    }
-    
-    #hero h1 {
-      margin: 0 0 10px 0;
-      font-size: 48px;
-      font-weight: 700;
-      line-height: 56px;
-      color: #fff;
-    }
-    
-    #hero h2 {
-      color: #eee;
-      margin-bottom: 40px;
-      font-size: 15px;
-      font-weight: 500;
-      font-family: "Open Sans", sans-serif;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-    
-    .main-btn {
-      font-family: "Poppins", sans-serif;
-      text-transform: uppercase;
-      font-weight: 500;
-      font-size: 14px;
-      letter-spacing: 1px;
-      display: inline-block;
-      padding: 8px 28px;
-      border-radius: 50px;
-      transition: 0.5s;
-      margin: 10px;
-      border: 2px solid #fff;
-      color: #fff;
-    }
-    
-     .main-btn:hover {
-      background: #11dbcf;
-      border: 2px solid #11dbcf;
-      text-decoration: none;
-      color:#fff;
-    }
-   .form-group .btn-form{
-    background: #11dbcf;
-    border: 2px solid #11dbcf;
-    text-decoration: none;
-    color:#000;
-   }
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-    .footer {
-        text-align: center;
-        font-size: 0.9rem;
-        background:rgba(17, 219, 207,0.8);
-      }
-      .footer .btn-back{
-        background: #fff;
-        color: #00d9ff;
-      }
-      .footer .text{
-        color: #000;
-      }
-      
-      
+.container {
+  max-width: 800px; /* Ancho máximo del contenido para centrarlo en pantallas más grandes */
+  margin: 50px auto; /* Centra el contenido verticalmente y con un espacio superior de 50px */
+  padding: 20px; /* Agrega un espacio interno al contenido */
+  background-color:rgb(18, 206, 219); /* Color de fondo del contenido */
+  border-radius: 10px; /* Bordes redondeados para un aspecto más suave */}
+
+.main-btn {
+  display: inline-block;
+  background-color: #21f306;
+  color: #fff;
+  padding: 12px 24px; /* Aumenta ligeramente el tamaño del botón para mayor prominencia */
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s; /* Agrega una transición suave al color de fondo */
+}
+
+.container h2 {
+  margin-top: 0; /* Elimina cualquier margen superior predeterminado del elemento h2 */
+  font-size: 23px; /* Establece el tamaño de fuente del elemento h2 */
+  font-weight: bold; /* Establece el peso de la fuente en negrita */
+  color: #fd0a0a; /* Establece el color del texto */
+  text-transform: uppercase; /* Convierte el texto a mayúsculas */
+  text-align: center; /* Centra el texto dentro del contenedor */
+  padding: 10px 0; /* Agrega relleno alrededor del texto */
+  border-bottom: 2px solid #ccc; /* Agrega una línea inferior */
+}
+
+.form-group {
+  margin-bottom: 30px; /* Incrementa ligeramente el espacio entre grupos de formulario */
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px; /* Agrega un espacio inferior entre la etiqueta y el campo de entrada */
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #f109bf;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: border-color 0.3s; /* Agrega una transición suave al color del borde */
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #11dbcf; /* Cambia el color del borde al enfocar el campo de entrada */
+}
+
+.footer {
+  text-align: center;
+  font-size: 14px; /* Aumenta ligeramente el tamaño del texto */
+  padding: 20px 0; /* Agrega espacio interno superior e inferior */
+  background: rgba(3, 168, 245, 0.8);
+  border-top: 1px solid #ddd; /* Agrega una línea superior para separar el pie de página del contenido */
+}
+
+.footer .btn-back {
+  background: #ee0505;
+  color: #08f52f; /* Utiliza el mismo color que los botones principales para una consistencia visual */
+  padding: 8px 16px; /* Ajusta el tamaño del botón */
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.footer .btn-back:hover {
+  background: #26f70b; /* Cambia el color de fondo al pasar el mouse sobre el botón */
+}

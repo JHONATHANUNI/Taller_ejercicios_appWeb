@@ -1,28 +1,30 @@
-let DB;
+//Obtención de elementos del DOM:
+let form = document.getElementById('consultationForm');
+let patientName = document.getElementById('patient-name');
+let contact = document.getElementById('contact');
+let date = document.getElementById('date');
+let time = document.getElementById('time');
+let consultations = document.getElementById('consultations');
+let services = document.getElementById('services');
+let doctor = document.getElementById('doctor');
 
-let form = document.querySelector('form');
-let patientName = document.querySelector('#patient-name');
-let contact = document.querySelector('#contact');
-let date = document.querySelector('#date');
-let time = document.querySelector('#time');
-let consultations = document.querySelector('#consultations');
-let services = document.querySelector('#services');
-let doctor = document.querySelector('#doctor'); // Agregado: obtener el elemento select para seleccionar el médico
-
+//Evento DOMContentLoaded:
 document.addEventListener('DOMContentLoaded', () => {
+    let DB;
+    //IndexedDB:
     let ScheduleDB = window.indexedDB.open('consultations', 1);
 
-    ScheduleDB.onerror = function() {
+    ScheduleDB.onerror = function () {
         console.log('error');
     }
 
-    ScheduleDB.onsuccess = function() {
+    ScheduleDB.onsuccess = function () {
         DB = ScheduleDB.result;
 
         showConsultations();
     }
 
-    ScheduleDB.onupgradeneeded = function(e) {
+    ScheduleDB.onupgradeneeded = function (e) {
         let db = e.target.result;
         let objectStore = db.createObjectStore('consultations', { keyPath: 'key', autoIncrement: true });
 
@@ -30,11 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
         objectStore.createIndex('contact', 'contact', { unique: false });
         objectStore.createIndex('date', 'date', { unique: false });
         objectStore.createIndex('time', 'time', { unique: false });
-        objectStore.createIndex('doctor', 'doctor', { unique: false }); // Agregado: crear un índice para el médico seleccionado
+        objectStore.createIndex('doctor', 'doctor', { unique: false });
     }
 
+    //Manejador de eventos para el formulario 
     form.addEventListener('submit', addConsultations);
 
+    //Función addConsultations(e):
+    //Esta función maneja el proceso de agregar una nueva consulta a la base de datos.
     function addConsultations(e) {
         e.preventDefault();
         let newConsultation = {
@@ -42,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             contact: contact.value,
             date: date.value,
             time: time.value,
-            doctor: doctor.value // Agregado: agregar el médico seleccionado al objeto de consulta
+            doctor: doctor.value
         }
 
         let transaction = DB.transaction(['consultations'], 'readwrite');
@@ -59,7 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('error');
         }
     }
-
+    //Función showConsultations():
+    // Esta función muestra todas las consultas almacenadas en la base de datos.
     function showConsultations() {
         while (consultations.firstChild) {
             consultations.removeChild(consultations.firstChild);
@@ -67,24 +73,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let objectStore = DB.transaction('consultations').objectStore('consultations');
 
-        objectStore.openCursor().onsuccess = function(e) {
+        objectStore.openCursor().onsuccess = function (e) {
             let cursor = e.target.result;
             if (cursor) {
                 let ConsultationHTML = document.createElement('li');
                 ConsultationHTML.setAttribute('data-consultation-id', cursor.value.key);
-                ConsultationHTML.classList.add('list-group-item');
+                ConsultationHTML.classList.add('list-item');
 
                 ConsultationHTML.innerHTML = `
-                    <p class="font-weight-bold">Patient Name: <span class="font-weight-normal">${cursor.value.patientname}</span></p>
-                    <p class="font-weight-bold">Contact: <span class="font-weight-normal">${cursor.value.contact}</span></p>
-                    <p class="font-weight-bold">Date: <span class="font-weight-normal">${cursor.value.date}</span></p>
-                    <p class="font-weight-bold">Time: <span class="font-weight-normal">${cursor.value.time}</span></p>
-                    <p class="font-weight-bold">Doctor: <span class="font-weight-normal">${cursor.value.doctor}</span></p>
-                `;
+          <p>Patient Name: <span>${cursor.value.patientname}</span></p>
+          <p>Contact: <span>${cursor.value.contact}</span></p>
+          <p>Date: <span>${cursor.value.date}</span></p>
+          <p>Time: <span>${cursor.value.time}</span></p>
+          <p>Doctor: <span>${cursor.value.doctor}</span></p>
+        `;
 
                 const cancelBtn = document.createElement('button');
-                cancelBtn.classList.add('btn', 'btn-danger');
-                cancelBtn.innerHTML = 'Cancel';
+                cancelBtn.classList.add('main-btn');
+                cancelBtn.textContent = 'Cancelar';
                 cancelBtn.onclick = removeConsultation;
 
                 ConsultationHTML.appendChild(cancelBtn);
@@ -93,18 +99,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 cursor.continue();
             } else {
                 if (!consultations.firstChild) {
-                    services.textContent = 'Change your visiting hours';
+                    services.textContent = 'Cambia tus horas de visita';
                     let noSchedule = document.createElement('p');
-                    noSchedule.classList.add('text-center');
-                    noSchedule.textContent = 'No results Found';
+                    noSchedule.textContent = 'No se encontraron resultados';
                     consultations.appendChild(noSchedule);
                 } else {
-                    services.textContent = 'Cancel Your consultations'
+                    services.textContent = 'Cancela tus consultas';
                 }
             }
         }
     }
 
+    //Función removeConsultation(e):
+    //Esta función maneja la eliminación de una consulta específica.
     function removeConsultation(e) {
         let scheduleID = Number(e.target.parentElement.getAttribute('data-consultation-id'));
 
@@ -117,16 +124,18 @@ document.addEventListener('DOMContentLoaded', () => {
             e.target.parentElement.parentElement.removeChild(e.target.parentElement);
 
             if (!consultations.firstChild) {
-                services.textContent = 'Change your visiting hours';
+                services.textContent = 'Cambia tus horas de visita';
 
                 let noSchedule = document.createElement('p');
-                noSchedule.classList.add('text-center');
-                noSchedule.textContent = 'No results Found';
+                noSchedule.textContent = 'No se encontraron resultados';
 
                 consultations.appendChild(noSchedule);
             } else {
-                services.textContent = 'Cancel your Consultation'
+                services.textContent = 'Cancela tus consultas';
             }
         }
     }
 });
+
+//En resumen, este código proporciona una interfaz para que los usuarios agreguen, 
+//vean y cancelen consultas médicas almacenadas en una base de datos local utilizando indexedDB.
