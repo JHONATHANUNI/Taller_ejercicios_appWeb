@@ -110,13 +110,12 @@ function sudoku(tabla){
             if (tabla[fila][colum]===0) {
                 for(let num=1;num<=9;num++){
 
-                    if(verific(tabla,fila,num,colum)){
+                    if(validacionDatos(tabla,fila,colum,num)){
                         tabla[fila][colum]=num;
-
+                        //recursividad
                         if(sudoku(tabla)){
                             return true;
                         }
-
                         tabla[colum][fila]=0;
                     }
                 }

@@ -129,9 +129,10 @@ button{
 }
 
 .efectoResol{
-    background-color: #683535;
+    background-color: #5a3232;
     transition: all 0.4s ease-in-out;
     float: left;
+    color: #fff7f7;
 
 }
 
