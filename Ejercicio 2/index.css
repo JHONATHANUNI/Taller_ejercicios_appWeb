@@ -1,4 +1,29 @@
 /* Estilos de nuestro cuerpo body */
+/* Estilos para la sección de selección de cantidad de cartas */
+#num-cards,
+#start-btn {
+  margin: 10px; /* Agrega un margen alrededor de los elementos */
+  padding: 8px 16px; /* Agrega relleno dentro de los elementos */
+  font-size: 16px; /* Establece el tamaño de fuente */
+  border: none; /* Elimina el borde de los elementos */
+  border-radius: 5px; /* Agrega bordes redondeados a los elementos */
+  cursor: pointer; /* Cambia el cursor al pasar sobre los elementos */
+  background-color: #4CAF50; /* Establece el color de fondo */
+  color: white; /* Establece el color del texto */
+}
+
+#num-cards {
+  width: 60px; /* Establece el ancho específico para el elemento de selección de cantidad de cartas */
+}
+
+#start-btn:hover {
+  background-color: #45a049; /* Cambia el color de fondo al pasar el mouse sobre el botón */
+}
+
+#start-btn:active {
+  background-color: #3e8e41; /* Cambia el color de fondo cuando se presiona el botón */
+}
+
 body{
     display: flex;
     justify-content: center;
