@@ -1,0 +1,105 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+ }
+
+ .headerBody{
+    text-align: center;
+    color: #ffffff;
+    height: 25px;
+    background-color: #7853a1dc;
+    user-select: none;
+    border-color: rgba(255, 255, 255, 0.36);
+    border-style: hidden;
+}
+
+body{
+    background-color:#9972c5a9 ;
+}
+
+
+.div-logo{
+    max-width: 1000px;
+    margin: auto;
+    display:block;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px; 
+
+    text-decoration: none;
+    color: unset
+}
+
+h1{
+    font-weight: 500;
+    font-size: 60px;
+    color: black;
+    text-shadow: 2px 2px 4px #683535;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;    
+}
+
+main{
+    width: 1000px;
+    margin: auto;
+    padding: 33px;
+    background: rgba(255, 255, 255, 0.167);
+    display: flex;
+    gap: 100px;
+}
+
+#imagenAhorcado{
+    width: 350px;
+}
+
+#palabra{
+    height: 80px;
+}
+
+#generador {
+    color: #ffffff;
+    background-color: #000000;
+    padding: 8px;
+    border-radius: 15px;
+    border-color: #ffffffdc;
+    width: 450px;
+    box-shadow: 2px 2px 2px #624b4b8d ;
+}
+
+#abecedario{
+    margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+#abecedario button{
+    width: 30px;
+    padding: 6px 0;
+    text-align: center;
+    border-radius: 50px;
+    border-color: rgb(194, 191, 191);
+    text-shadow: 2px 1px 3px #624b4b8d;
+}
+
+#palabra span{
+    vertical-align: bottom;
+    font-size: 2em;
+    border-bottom: 2px solid black;
+    width: 30px;
+    text-align: center;
+    margin-right: 6px;
+    display: inline-block; /* sin esto, por ser un elemento de línea, no tomaría el width */
+}
+
+footer{
+    background-color: #7853a1dc;
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-direction: column;
+}
